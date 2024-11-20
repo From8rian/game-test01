@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://bo7ovoksirlef"]
+
+[ext_resource type="Texture2D" uid="uid://d04kip3r126g5" path="res://alivechick1.png" id="1_r7p6j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4oq5"]
+atlas = ExtResource("1_r7p6j")
+region = Rect2(0, 0, 358, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ag0y8"]
+atlas = ExtResource("1_r7p6j")
+region = Rect2(0, 0, 358, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cy8kg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4oq5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ag0y8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xab8f"]
+radius = 137.0
+height = 274.0
+
+[node name="chicken" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(5, -2)
+sprite_frames = SubResource("SpriteFrames_cy8kg")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6, 4)
+shape = SubResource("CapsuleShape2D_xab8f")
